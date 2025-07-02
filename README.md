@@ -1,8 +1,6 @@
 # Laravel SmsApi Notification Channel
 
 [![Latest Version](https://img.shields.io/packagist/v/webxscripts/laravel-smsapi-notification-channel.svg?style=flat-square)](https://packagist.org/packages/webxscripts/laravel-smsapi-notification-channel)
-[![Tests](https://img.shields.io/github/actions/workflow/status/webxscripts/laravel-smsapi-notification-channel/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/webxscripts/laravel-smsapi-notification-channel/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![Code Style](https://img.shields.io/github/actions/workflow/status/webxscripts/laravel-smsapi-notification-channel/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/webxscripts/laravel-smsapi-notification-channel/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/webxscripts/laravel-smsapi-notification-channel.svg?style=flat-square)](https://packagist.org/packages/webxscripts/laravel-smsapi-notification-channel)
 
 A Laravel 11+ notification channel for [SmsApi](https://www.smsapi.com/) with PHP 8.2+ support.
