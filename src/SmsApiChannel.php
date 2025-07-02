@@ -81,11 +81,11 @@ final readonly class SmsApiChannel
     {
         $routes = $notifiable->routes ?? [];
 
-        if (!empty($routes['smsapi'])) {
+        if (! empty($routes['smsapi'])) {
             return $routes['smsapi'];
         }
 
-        if (!empty($routes['sms'])) {
+        if (! empty($routes['sms'])) {
             return $routes['sms'];
         }
 
@@ -134,7 +134,7 @@ final readonly class SmsApiChannel
         $properties = [
             'encoding', 'test', 'fast', 'normalize', 'noUnicode', 'single',
             'notifyUrl', 'expirationDate', 'timeRestriction', 'partnerId',
-            'checkIdx', 'idx', 'template', 'param1', 'param2', 'param3', 'param4'
+            'checkIdx', 'idx', 'template', 'param1', 'param2', 'param3', 'param4',
         ];
 
         foreach ($properties as $property) {

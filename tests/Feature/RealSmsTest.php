@@ -15,7 +15,8 @@ it('can send test sms to real api', function () {
     config(['smsapi.service' => env('SMSAPI_SERVICE')]);
     config(['smsapi.from' => env('SMSAPI_FROM')]);
 
-    $notification = new class extends Notification {
+    $notification = new class extends Notification
+    {
         public function via($notifiable): array
         {
             return ['smsapi'];
@@ -24,8 +25,7 @@ it('can send test sms to real api', function () {
         public function toSmsApi($notifiable): SmsApiMessage
         {
             return SmsApiMessage::create('test - ' . now()->format('H:i:s'))
-                ->from('getmed')
-                ->test(true);
+                ->test();
         }
     };
 
@@ -38,7 +38,7 @@ it('can send test sms to real api', function () {
 });
 
 it('can send real sms with confirmation', function () {
-    if (!env('SEND_REAL_SMS', false)) {
+    if (! env('SEND_REAL_SMS', false)) {
         test()->markTestSkipped('Set SEND_REAL_SMS=true to send real SMS');
     }
 
@@ -50,7 +50,8 @@ it('can send real sms with confirmation', function () {
     config(['smsapi.service' => env('SMSAPI_SERVICE')]);
     config(['smsapi.from' => env('SMSAPI_FROM')]);
 
-    $notification = new class extends Notification {
+    $notification = new class extends Notification
+    {
         public function via($notifiable): array
         {
             return ['smsapi'];
@@ -59,7 +60,6 @@ it('can send real sms with confirmation', function () {
         public function toSmsApi($notifiable): SmsApiMessage
         {
             return SmsApiMessage::create('test - ' . now()->format('H:i:s'))
-                ->from('getmed')
                 ->test(false);
         }
     };
