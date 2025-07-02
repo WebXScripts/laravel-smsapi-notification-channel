@@ -35,7 +35,6 @@ final class SmsApiMessage
         return new self($content);
     }
 
-    // Pozostałe metody jak wcześniej...
     public function from(string $from): self
     {
         return $this->withProperty('from', $from);
