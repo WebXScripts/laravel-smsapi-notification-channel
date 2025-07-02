@@ -1,0 +1,81 @@
+{
+  "name": "webxscripts/laravel-smsapi-notification-channel",
+  "description": "Modern Laravel Notification Channel for SmsApi PHP Client",
+  "keywords": [
+    "sms",
+    "notification",
+    "laravel",
+    "smsapi",
+    "channel"
+  ],
+  "homepage": "https://github.com/WebXScripts/laravel-smsapi-notification-channel",
+  "license": "MIT",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "WebXScripts",
+      "email": "nevobusiness@gmail.com",
+      "homepage": "https://webxscripts.ovh"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "illuminate/notifications": "^11.0|^12.0",
+    "illuminate/support": "^11.0|^12.0",
+    "smsapi/php-client": "^3.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.0|^10.0",
+    "phpunit/phpunit": "^10.0|^11.0",
+    "phpstan/phpstan": "^1.10",
+    "laravel/pint": "^1.0",
+    "pestphp/pest": "^2.0",
+    "pestphp/pest-plugin-laravel": "^2.0",
+    "mockery/mockery": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "WebXScripts\\SmsApiNotification\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WebXScripts\\SmsApiNotification\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "WebXScripts\\SmsApiNotification\\SmsApiNotificationServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "pest",
+    "test:unit": "pest tests/Unit",
+    "test:feature": "pest tests/Feature",
+    "test:coverage": "pest --coverage --min=80",
+    "test:coverage-html": "pest --coverage-html=build/coverage",
+    "format": "pint",
+    "format:test": "pint --test",
+    "analyse": "phpstan analyse --memory-limit=2G",
+    "analyse:baseline": "phpstan analyse --generate-baseline",
+    "check": [
+      "@format:test",
+      "@analyse",
+      "@test"
+    ],
+    "fix": [
+      "@format",
+      "@test"
+    ]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
