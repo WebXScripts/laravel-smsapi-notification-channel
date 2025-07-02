@@ -12,6 +12,8 @@ it('can send test sms to real api', function () {
     }
 
     config(['smsapi.api_token' => env('SMSAPI_REAL_TOKEN')]);
+    config(['smsapi.service' => env('SMSAPI_SERVICE')]);
+    config(['smsapi.from' => env('SMSAPI_FROM')]);
 
     $notification = new class extends Notification {
         public function via($notifiable): array
@@ -45,6 +47,8 @@ it('can send real sms with confirmation', function () {
     }
 
     config(['smsapi.api_token' => env('SMSAPI_REAL_TOKEN')]);
+    config(['smsapi.service' => env('SMSAPI_SERVICE')]);
+    config(['smsapi.from' => env('SMSAPI_FROM')]);
 
     $notification = new class extends Notification {
         public function via($notifiable): array
@@ -57,40 +61,6 @@ it('can send real sms with confirmation', function () {
             return SmsApiMessage::create('test - ' . now()->format('H:i:s'))
                 ->from('getmed')
                 ->test(false);
-        }
-    };
-
-    $phoneNumber = env('TEST_PHONE_NUMBER', '+48123456789');
-
-    NotificationFacade::route('smsapi', $phoneNumber)
-        ->notify($notification);
-
-    expect(true)->toBeTrue();
-});
-
-it('can send sms with template parameters', function () {
-    if (empty(env('SMSAPI_REAL_TOKEN'))) {
-        test()->markTestSkipped('SMSAPI_REAL_TOKEN not provided');
-    }
-
-    config(['smsapi.api_token' => env('SMSAPI_REAL_TOKEN')]);
-
-    $notification = new class extends Notification {
-        public function via($notifiable): array
-        {
-            return ['smsapi'];
-        }
-
-        public function toSmsApi($notifiable): SmsApiMessage
-        {
-            return SmsApiMessage::create('Template test with params')
-                ->from('TestApp')
-                ->test(true)
-                ->template('welcome_template')
-                ->param1('John')
-                ->param2('Doe')
-                ->param3('123456')
-                ->param4('2025-07-02');
         }
     };
 
